@@ -1,0 +1,46 @@
+.container {
+    margin: 10px 0 0 10px;
+}
+
+.square-window-indicator {
+    --indicator-size: 19px;
+    --indicator-select: 0; /* 0, 1, 2 */
+    border: thin solid black;
+    width: 140px;
+    height: calc(var(--indicator-size) + 10px);
+    overflow: hidden;
+    border-radius: 9px;
+
+}
+
+.square-window-dial {
+    margin-top: calc(var(--indicator-select) * (var(--indicator-size) * -1 - 8px));
+    transition: margin-top 500ms;
+    transition-timing-function: ease-in-out;
+    cursor: pointer;
+}
+
+.square-window-dial:hover {
+    --indicator-select: 2
+}
+
+.indicator {
+    font-weight: bold;
+    font-size: var(--indicator-size);
+    text-align:center;
+}
+
+.green {
+    background-color: green;
+    color: white;
+}
+
+
+.blue {
+    background-color: blue;
+    color: white;
+}
+
+.yellow {
+    background-color: yellow;
+}
