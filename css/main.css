@@ -1,5 +1,6 @@
 .container {
     margin: 10px 0 0 10px;
+    --indicator-time: 2000ms;
 }
 
 .square-window-indicator {
@@ -15,7 +16,7 @@
 
 .square-window-dial {
     margin-top: calc(var(--indicator-select) * (var(--indicator-size) * -1 - 8px));
-    transition: margin-top 500ms;
+    transition: margin-top var(--indicator-time);
     transition-timing-function: ease-in-out;
     cursor: pointer;
 }
@@ -24,17 +25,65 @@
     --indicator-select: 2
 }
 
-.indicator {
+.square-window-dial .indicator {
     font-weight: bold;
     font-size: var(--indicator-size);
-    text-align:center;
+    text-align: center;
+}
+
+/* Half round window indicator ****************************************************************************************/
+
+.half-round-window-indicator {
+    position: relative;
+    background-color: black;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.half-round-window-indicator .dial {
+    transition: margin-left var(--indicator-time), margin-right var(--indicator-time), transform var(--indicator-time);
+    transition-timing-function: ease-in-out;
+    margin-left: 1px;
+    margin-right: 0px;
+    margin-top: 1px;
+}
+
+.half-round-window-indicator .dial:hover {
+    transform: rotate(180deg);
+    margin-right: 1px;
+    margin-left: 0;
+}
+
+.half-round-window-indicator .dial .indicator {
+    width: 98px;
+    height: 49px;
+    border-top-left-radius: 49px;
+    border-top-right-radius: 49px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    padding-top: 18px;
+}
+
+.half-round-window-indicator .dial .indicator:nth-child(2) {
+    transform: rotate(180deg);
+}
+
+.half-round-window-indicator .blocker {
+    position: absolute;
+    top: 49px;
+    left: 0px;
+    background-color: white;
+    width: 100px;
+    height: 51px;
 }
 
 .green {
     background-color: green;
     color: white;
 }
-
 
 .blue {
     background-color: blue;
@@ -43,4 +92,9 @@
 
 .yellow {
     background-color: yellow;
+}
+
+.red {
+    background-color: red;
+    color: white;
 }
